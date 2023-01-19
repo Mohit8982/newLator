@@ -28,7 +28,8 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       const transcript = received.channel.alternatives[0].transcript;
       if (transcript && received.is_final) {
         const room = getQString( location.href, 'room' );
-        const userId = document.getElementById( 'userId' ).value;
+        const userId =  document.getElementById("userId").value
+        console.log(userId)
         const data = {
           user_id: userId,
           room : room,
