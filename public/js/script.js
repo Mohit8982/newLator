@@ -43,6 +43,8 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       }
     }
 
+    
+
     socket.onclose = () => {
       console.log({ event: 'onclose' })
     }
