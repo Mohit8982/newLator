@@ -6,7 +6,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
         mimeType: 'audio/webm',
     })
 
-    const user_id = sessionStorage.getItem( 'user_id' );
+    // const user_id = sessionStorage.getItem( 'user_id' );
     const userId =  document.getElementById("userId").value;
     const socket = new WebSocket('wss://api.deepgram.com/v1/listen', [
       'token',
@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
         
         console.log("userId is null ==>",userId)
         const data = {
-          user_id: userId,
+          user_id: sessionStorage.getItem( 'user_id' ),
           room : room,
           transcript: transcript
         }
