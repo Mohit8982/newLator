@@ -1,9 +1,11 @@
 import h from './helpers.js';
 
+
 window.addEventListener( 'load', () => {
     const room = h.getQString( location.href, 'room' );
     const username = sessionStorage.getItem( 'username' );
     const userId = sessionStorage.getItem('user_id');
+    document.getElementById('userId').value = userId;
     if ( !room ) {
         document.querySelector( '#room-create' ).attributes.removeNamedItem( 'hidden' );
     }
@@ -32,8 +34,7 @@ window.addEventListener( 'load', () => {
             //set socketId
             socketId = socket.io.engine.id;
             document.getElementById('randomNumber').innerText = randomNumber;
-            console.log(userId);
-            document.getElementById('userId').value = userId;
+            
             socket.emit( 'subscribe', {
                 room: room,
                 socketId: socketId
