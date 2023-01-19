@@ -1,12 +1,5 @@
 const socket_backend =  io();
 
-let userId = "";
-window.addEventListener( 'load', () => {
-   userId =  document.getElementById("userId").value;
-})
-
-
-
 navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (stream) => {
 
 	  const mediaRecorder = new MediaRecorder(stream, {
@@ -14,7 +7,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
     })
 
     const user_id = sessionStorage.getItem( 'user_id' );
-
+    const userId =  document.getElementById("userId").value;
     const socket = new WebSocket('wss://api.deepgram.com/v1/listen', [
       'token',
       '47568cc2314f5bdbb3f9768a139ae84df01201f5',
