@@ -103,15 +103,12 @@ window.addEventListener( 'load', () => {
             }
             
             socket.on("voice",(data)=>{
-                const { user_id, transcript  }= data;
+                const { user_id, transcript, socket_id  }= data;
                 const user_local_id = document.getElementById("userId").value;
                 console.log(data, user_local_id);
+                var id = socket.io.engine.id;
                 document.getElementById("convert_text").innerHTML = transcript;
-                // if(user_id){
-                    // if(user_local_id !== user_id)
-                     say(transcript)
-                // }
-                
+                if(socket_id !== id)    say(transcript)
             })
             
         });
