@@ -29,13 +29,14 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       if (transcript && received.is_final) {
         const room = getQString( location.href, 'room' );
         
-        console.log("userId is null ==>",userId)
+        const userIdd = sessionStorage.getItem('user_id') 
         const data = {
-          user_id: sessionStorage.getItem( 'user_id' ),
+          user_id: userIdd,
           room : room,
           transcript: transcript
         }
-        socket_backend.emit("voice", data);
+
+      if(userIdd) socket_backend.emit("voice", data);
       }
     }
 
