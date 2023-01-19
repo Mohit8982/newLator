@@ -29,7 +29,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       if (transcript && received.is_final) {
         const room = getQString( location.href, 'room' );
         
-        const userIdd =  await sessionStorage.getItem('user_id') 
+        const userIdd =  await sessionStorage.getItem( 'username' ) 
         const data = {
           user_id: userIdd,
           room : room,

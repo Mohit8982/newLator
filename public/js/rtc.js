@@ -104,7 +104,7 @@ window.addEventListener( 'load', () => {
             
             socket.on("voice",(data)=>{
                 const { user_id, transcript, socket_id  }= data;
-                const user_local_id = document.getElementById("userId").value;
+                const user_local_id = sessionStorage.getItem( 'username' );
                 document.getElementById("convert_text").innerHTML = transcript;
                 console.log(user_id, user_local_id)
                 if(user_local_id !== user_id) {
