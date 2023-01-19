@@ -14,11 +14,12 @@ const fs = require('fs')
  */
 
 var http_option = {
-  key: fs.readFileSync("C:/Users/mohit.barua_infobean/Documents/newLator/bin/creatingWowPrivateKey.key"),
-  cert: fs.readFileSync("C:/Users/mohit.barua_infobean/Documents/newLator/bin/star_creatingwow_in.crt"),
+  key: fs.readFileSync("/home/workspace/accent-conversion/bin/creatingWowPrivateKey.key"),
+  cert: fs.readFileSync("/home/workspace/accent-conversion/bin/star_creatingwow_in.crt"),
   ca: [
-  fs.readFileSync('C:/Users/mohit.barua_infobean/Documents/newLator/bin/DigiCertCA.crt')
+  fs.readFileSync('/home/workspace/accent-conversion/bin/DigiCertCA.crt')
   ] };
+
 
 
 var port = normalizePort(process.env.PORT || '4000');
