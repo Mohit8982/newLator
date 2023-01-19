@@ -106,7 +106,10 @@ window.addEventListener( 'load', () => {
                 const { user_id, transcript, socket_id  }= data;
                 const user_local_id = document.getElementById("userId").value;
                 document.getElementById("convert_text").innerHTML = transcript;
-                say(transcript)
+                console.log(user_id, user_local_id)
+                if(user_local_id !== user_id) {
+                    say(transcript)
+                }
             })
             
         });
