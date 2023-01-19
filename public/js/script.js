@@ -1,5 +1,11 @@
 const socket_backend =  io();
-const userId =  document.getElementById("userId").value;
+
+let userId = "";
+window.addEventListener( 'load', () => {
+   userId =  document.getElementById("userId").value;
+})
+
+
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (stream) => {
 
