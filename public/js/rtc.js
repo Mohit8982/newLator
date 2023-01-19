@@ -64,7 +64,7 @@ window.addEventListener( 'load', () => {
 
                         //save my stream
                         myStream = stream;
-
+                        
                         stream.getTracks().forEach( ( track ) => {
                             pc[data.sender].addTrack( track, stream );
                         } );
@@ -200,11 +200,11 @@ window.addEventListener( 'load', () => {
                     newVid.srcObject = str;
                     newVid.autoplay = true;
                     newVid.className = 'remote-video';
-
+                    let micId = `mic-${newVid.id}`;
                     //video controls elements
                     let controlDiv = document.createElement('div');
                     controlDiv.className = 'remote-video-controls';
-                    controlDiv.innerHTML = `<i class="fa fa-microphone text-white pr-3 mute-remote-mic" title="Mute"></i><i class="fa fa-expand text-white expand-remote-video" title="Expand"></i>`;
+                    controlDiv.innerHTML = `<i class="fa fa-microphone text-white pr-3 mute-remote-mic" id="${micId}" title="Mute"></i><i class="fa fa-expand text-white expand-remote-video" title="Expand"></i>`;
 
                     //create a new div for card
                     let cardDiv = document.createElement( 'div' );
@@ -214,7 +214,7 @@ window.addEventListener( 'load', () => {
                     cardDiv.appendChild( controlDiv );
                     //put div in main-section elem
                     document.getElementById( 'videos' ).appendChild( cardDiv );
-
+                    muteNewUser(micId)
                     h.adjustVideoElemSize();
                 }
             };
@@ -243,6 +243,9 @@ window.addEventListener( 'load', () => {
             };
         }
 
+        function muteNewUser(id) {
+            document.getElementById(id).click();
+        }
 
 
         function shareScreen() {
@@ -290,7 +293,7 @@ window.addEventListener( 'load', () => {
 
         function broadcastNewTracks( stream, type, mirrorMode = true ) {
             h.setLocalStream( stream, mirrorMode );
-
+            stream.getAudioTracks()[0].enabled = false; // or false to mute it.
             let track = type == 'audio' ? stream.getAudioTracks()[0] : stream.getVideoTracks()[0];
             for ( let p in pc ) {
                 let pName = pc[p];
@@ -404,7 +407,6 @@ window.addEventListener( 'load', () => {
                 e.target.classList.remove( 'fa-microphone-alt' );
                 e.target.classList.add( 'fa-microphone-alt-slash' );
                 elem.setAttribute( 'title', 'Unmute' );
-
                 myStream.getAudioTracks()[0].enabled = false;
             }
 
@@ -484,5 +486,7 @@ window.addEventListener( 'load', () => {
                 } ).catch( () => { } );
             }
         } );
+
+        
     }
-} );
+});
