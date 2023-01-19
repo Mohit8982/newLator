@@ -30,13 +30,16 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
         const room = getQString( location.href, 'room' );
         
         const userIdd = sessionStorage.getItem('user_id') 
+        var id = socket_backend.io.engine.id;
         const data = {
           user_id: userIdd,
           room : room,
-          transcript: transcript
+          transcript: transcript,
+          socket_id: id
         }
 
-      if(userIdd) socket_backend.emit("voice", data);
+        
+        if(userIdd) socket_backend.emit("voice", data);
       }
     }
 
