@@ -30,20 +30,15 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
         const room = getQString( location.href, 'room' );
         
         const userIdd = sessionStorage.getItem('user_id') 
-        var id = socket_backend.io.engine.id;
         const data = {
           user_id: userIdd,
           room : room,
-          transcript: transcript,
-          socket_id: id
+          transcript: transcript
         }
 
-        
-        if(userIdd) socket_backend.emit("voice", data);
+        socket_backend.emit("voice", data);
       }
     }
-
-    
 
     socket.onclose = () => {
       console.log({ event: 'onclose' })
