@@ -1,4 +1,5 @@
 const socket_backend =  io();
+const userId =  document.getElementById("userId").value;
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (stream) => {
 
@@ -28,8 +29,8 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       const transcript = received.channel.alternatives[0].transcript;
       if (transcript && received.is_final) {
         const room = getQString( location.href, 'room' );
-        const userId =  document.getElementById("userId").value
-        console.log(userId)
+        
+        console.log("userId is null ==>",userId)
         const data = {
           user_id: userId,
           room : room,
