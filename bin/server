@@ -21,7 +21,7 @@ var http_option = {
   ] };
 
 
-var port = normalizePort(process.env.PORT || '6000');
+var port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
 /**
