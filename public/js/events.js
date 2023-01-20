@@ -91,10 +91,9 @@ window.addEventListener( 'load', () => {
         if ( name ) {
             //remove error message, if any
             document.querySelector('#err-msg-username').innerText = "";
-
             //save the user's name in sessionStorage
             sessionStorage.setItem( 'username', name );
-
+            sessionStorage.setItem( 'user_id', `${name}_${helpers.generateRandomString()}` );
             //reload room
             location.reload();
         }
@@ -120,14 +119,3 @@ window.addEventListener( 'load', () => {
         helpers.toggleModal( 'recording-options-modal', false );
     } );
 } );
-
-
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}

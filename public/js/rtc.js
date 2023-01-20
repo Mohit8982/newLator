@@ -5,7 +5,6 @@ window.addEventListener( 'load', () => {
     const room = h.getQString( location.href, 'room' );
     const username = sessionStorage.getItem( 'username' );
     const userId = sessionStorage.getItem('user_id');
-    document.getElementById('userId').value = userId;
     if ( !room ) {
         document.querySelector( '#room-create' ).attributes.removeNamedItem( 'hidden' );
     }
@@ -103,10 +102,9 @@ window.addEventListener( 'load', () => {
             }
             
             socket.on("voice",(data)=>{
-                const { user_id, transcript, socket_id  }= data;
-                const user_local_id = sessionStorage.getItem( 'username' );
+                const { user_id, transcript  }= data;
+                const user_local_id = sessionStorage.getItem('userId');
                 document.getElementById("convert_text").innerHTML = transcript;
-                console.log(user_id, user_local_id)
                 if(user_local_id !== user_id) {
                     say(transcript)
                 }
@@ -276,7 +274,6 @@ window.addEventListener( 'load', () => {
         }
 
 
-
         function stopSharingScreen() {
             //enable video toggle btn
             h.toggleVideoBtnDisabled( false );
@@ -292,8 +289,6 @@ window.addEventListener( 'load', () => {
                 console.error( e );
             } );
         }
-
-
 
         function broadcastNewTracks( stream, type, mirrorMode = true ) {
             h.setLocalStream( stream, mirrorMode );

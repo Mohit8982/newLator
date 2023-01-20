@@ -23,13 +23,12 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(async (st
       mediaRecorder.start(1000)
     }
 
-    socket.onmessage = async (message) => {
+    socket.onmessage = (message) => {
       const received = JSON.parse(message.data)
       const transcript = received.channel.alternatives[0].transcript;
       if (transcript && received.is_final) {
         const room = getQString( location.href, 'room' );
-        
-        const userIdd =  await sessionStorage.getItem( 'username' ) 
+        const userIdd = sessionStorage.getItem( 'username' ) 
         const data = {
           user_id: userIdd,
           room : room,

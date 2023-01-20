@@ -18,7 +18,14 @@ var http_option = {
   cert: fs.readFileSync("/home/workspace/accent-conversion/bin/star_creatingwow_in.crt"),
   ca: [
   fs.readFileSync('/home/workspace/accent-conversion/bin/DigiCertCA.crt')
-  ] };
+]};
+
+// var http_option = {
+//   key: fs.readFileSync("C:/Users/mohit.barua_infobean/Documents/newLator/bin/creatingWowPrivateKey.key"),
+//   cert: fs.readFileSync("C:/Users/mohit.barua_infobean/Documents/newLator/bin/star_creatingwow_in.crt"),
+//   ca: [
+//   fs.readFileSync('C:/Users/mohit.barua_infobean/Documents/newLator/bin/DigiCertCA.crt')
+// ]};
 
 
 
