@@ -61,8 +61,8 @@ window.addEventListener( 'load', () => {
             document.querySelector('#err-msg').innerText = "";
 
             //save the user's name in sessionStorage
-            sessionStorage.setItem( 'username', yourName );
-            sessionStorage.setItem( 'user_id', `${yourName}_${helpers.generateRandomString()}` );
+            sessionStorage.setItem('username', yourName );
+            sessionStorage.setItem('user_id', `${yourName}_${helpers.generateRandomString()}`);
 
             //create room link
             let roomLink = `${ location.origin }?room=${ roomName.trim().replace( ' ', '_' ) }_${ helpers.generateRandomString() }`;
