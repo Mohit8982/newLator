@@ -20,6 +20,10 @@
     padding: 40px 10px;
 }
 
+.card-align{
+        padding: 40px 10px !important;
+}
+
 .chat-col.chat-opened {
     right: 0;
     overflow-y: auto;
