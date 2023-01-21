@@ -16,6 +16,10 @@
     margin-top: 10%!important;
 }
 
+.videoCard{
+    padding: 40px 10px;
+}
+
 .chat-col.chat-opened {
     right: 0;
     overflow-y: auto;
