@@ -12,6 +12,10 @@
     min-height: 100vh;
 }
 
+.heading{
+    margin-top: 10%!important;
+}
+
 .chat-col.chat-opened {
     right: 0;
     overflow-y: auto;
